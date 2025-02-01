@@ -23,12 +23,16 @@ inner join shop.products p on p.suppliers_id = s.id
 -- Мы бы получили только тех постащиков у которых есть продукты. При этом все поставщики у которых нет товаров, были бы полностью исключены из рузультатов.
 
 -- Напишите запрос на добавление данных с выводом информации о добавленных строках.
-insert into shop.categories (id,name)
-values (1,'Вода'),
+with inserted as(
+       insert into shop.categories (id,name)
+       values 
+       (1,'Вода'),
        (2,'Мясо'),
        (3,'Хлеб'),
        (4,'Сыр')
-;
+       returning *
+)
+select * from inserted;
 
 insert into shop.suppliers (id,name,contacts,address)
 values (5,'Поставщик N','+79517555555','Адрес1')
