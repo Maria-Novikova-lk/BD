@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS purchases
 2.
 
 В таблицу `products` добавлено поле `specifications` в формате JSON.
-Для демонстрации создадим таблицу без лишних столбцов и добавим в нее данные.
+Для демонстрации создадим таблицу и добавим в нее данные.
 
 ```MySQL
 INSERT INTO products (name, specifications)
@@ -49,7 +49,7 @@ VALUES ('TWS Наушники Readme Buts 5',
         }');
 ```
 
-Теперь можно писать выборки по Спецификации
+После можно писать выборки по Спецификации
 ```MySQL
 SELECT * FROM products WHERE JSON_EXTRACT(specifications, '$."Страна"') = 'Китай';
 ```
