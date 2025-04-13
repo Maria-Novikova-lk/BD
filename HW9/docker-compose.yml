@@ -2,9 +2,9 @@ version: '3.1'
 
 services:
   otusdb:
-    image: mysql:8.0.15
+    image: mysql:9.2.0
     environment:
-      - MYSQL_ROOT_PASSWORD=12345
+      - MYSQL_ROOT_PASSWORD=root
     command: 
       --init-file /init.sql
     volumes:
@@ -14,7 +14,7 @@ services:
     expose:
       - "3306"
     ports:
-      - "3309:3306"
+      - "3306:3306"
 
 volumes:
   data:
