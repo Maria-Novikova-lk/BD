@@ -32,8 +32,7 @@ BEGIN
         INSERT INTO categories (title) VALUES (CONCAT('Категория ', i));
         SET cat_id = LAST_INSERT_ID();
 
-        -- Генерируем 10 000 товаров для текущей категории
-        -- Для уникальности цен используем формулу: базовая цена + уникальный индекс
+        
         DECLARE j INT DEFAULT 1;
         DECLARE base_price INT DEFAULT 100; -- базовая цена
         WHILE j <= 10000 DO
@@ -41,7 +40,7 @@ BEGIN
             VALUES (
                 CONCAT('Товар ', j),
                 cat_id,
-                base_price + j + (i * 100000), -- чтобы цены не пересекались между категориями
+                base_price + j + (i * 100000), 
                 FLOOR(RAND() * 6), -- рейтинг от 0 до 5
                 IF(RAND() < 0.5, 'В наличии', 'Распродан')
             );
